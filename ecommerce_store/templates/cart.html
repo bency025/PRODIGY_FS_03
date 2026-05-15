@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>Shopping Cart</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+<body>
+
+{% include 'navbar.html' %}
+
+<div class="cart-container">
+
+    <h1>Your Cart</h1>
+
+    {% if products %}
+
+        <table>
+
+            <tr>
+
+                <th>Product</th>
+
+                <th>Price</th>
+
+                <th>Action</th>
+
+            </tr>
+
+            {% for product in products %}
+
+            <tr>
+
+                <td>{{ product.name }}</td>
+
+                <td>₹ {{ product.price }}</td>
+
+                <td>
+
+                    <a href="/remove/{{ product.id }}" class="remove">
+                        Remove
+                    </a>
+
+                </td>
+
+            </tr>
+
+            {% endfor %}
+
+        </table>
+
+        <h2>Total: ₹ {{ total }}</h2>
+
+    {% else %}
+
+        <h2>Cart is Empty</h2>
+
+    {% endif %}
+
+</div>
+
+</body>
+</html>

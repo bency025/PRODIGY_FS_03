@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>Local Store</title>
+
+    <link rel="stylesheet" href="static/style.css">
+
+</head>
+<body>
+
+{% include 'navbar.html' %}
+
+<h1 class="title">Products</h1>
+
+<div class="products">
+
+    {% for product in products %}
+
+    <div class="card">
+
+        <img src="static/images/{{ product.image }}">
+
+        <h2>{{ product.name }}</h2>
+
+        <p>{{ product.description }}</p>
+
+        <h3>₹ {{ product.price }}</h3>
+
+        <a href="/add_to_cart/{{ product.id }}" class="btn">
+            Add to Cart
+        </a>
+
+    </div>
+
+    {% endfor %}
+
+</div>
+
+</body>
+</html>
